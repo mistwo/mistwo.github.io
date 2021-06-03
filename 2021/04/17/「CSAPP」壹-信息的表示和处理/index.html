@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"mistwo.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="”有无相生，难易相成，长短相形，高下相倾“，许多事物能用二进制表示不同的状态，比如桌子上草稿纸是空白的还是涂鸦的，电脑里的steam是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向是顺时针还是逆时针……总之二进制的适用性非常广泛。">
+  <meta name="description" content="“有无相生，难易相成，长短相形，高下相倾”，许多事物能用二进制表示不同的状态，比如草稿纸是空白的还是涂鸦的，steam 是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向为顺时针还是逆时针……总之，二进制思想的适用性非常广泛。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「CSAPP」壹 信息的表示和处理">
 <meta property="og:url" content="http://mistwo.github.io/2021/04/17/%E3%80%8CCSAPP%E3%80%8D%E5%A3%B9-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="hcxs">
-<meta property="og:description" content="”有无相生，难易相成，长短相形，高下相倾“，许多事物能用二进制表示不同的状态，比如桌子上草稿纸是空白的还是涂鸦的，电脑里的steam是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向是顺时针还是逆时针……总之二进制的适用性非常广泛。">
+<meta property="og:description" content="“有无相生，难易相成，长短相形，高下相倾”，许多事物能用二进制表示不同的状态，比如草稿纸是空白的还是涂鸦的，steam 是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向为顺时针还是逆时针……总之，二进制思想的适用性非常广泛。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/30/2EXVxA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/30/2EOOC4.png">
 <meta property="article:published_time" content="2021-04-17T12:53:15.000Z">
-<meta property="article:modified_time" content="2021-04-19T09:49:32.956Z">
+<meta property="article:modified_time" content="2021-05-31T06:59:10.715Z">
 <meta property="article:author" content="huichongxiansheng@163.com">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/05/30/2EXVxA.png">
 
 <link rel="canonical" href="http://mistwo.github.io/2021/04/17/%E3%80%8CCSAPP%E3%80%8D%E5%A3%B9-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/">
 
@@ -196,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-19 17:49:32" itemprop="dateModified" datetime="2021-04-19T17:49:32+08:00">2021-04-19</time>
+                <time title="修改时间：2021-05-31 14:59:10" itemprop="dateModified" datetime="2021-05-31T14:59:10+08:00">2021-05-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,23 +222,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>”有无相生，难易相成，长短相形，高下相倾“，许多事物能用二进制表示不同的状态，比如桌子上草稿纸是空白的还是涂鸦的，电脑里的steam是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向是顺时针还是逆时针……总之二进制的适用性非常广泛。</p>
+        <p>“有无相生，难易相成，长短相形，高下相倾”，许多事物能用二进制表示不同的状态，比如草稿纸是空白的还是涂鸦的，steam 是启动的还是关闭的，推而广之，纸带有孔无孔，电压是高是低，磁场方向为顺时针还是逆时针……总之，二进制思想的适用性非常广泛。</p>
 <span id="more"></span>
-<p>然而孤立的二进制位并不是非常有用，但当我们将二进制位进行适当的组合，并赋予其某种含义时，他们就能表示任意一个有限集合里的元素。</p>
-<p>计算机中的整数和浮点数就是通过二进制编码表示的。由于二进制位只能精确表示有限集合，而实数集合是无限的，因此在表示上难免有、碰到一些问题，比如：</p>
+<p>孤立的二进制位并不实用，但当我们将二进制位进行适当的组合，并赋予其某种含义时，它们就能表示任意一个有限集合里的所有元素。</p>
+<p>计算机中的整数和浮点数就是通过二进制编码表示的。由于二进制位只能精确表示有限集合，而实数集合是无限的，因此在表示上难免会碰到一些问题，比如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="number">100</span> * <span class="number">200</span> * <span class="number">300</span> * <span class="number">400</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;		<span class="comment">// 整数</span></span><br><span class="line">    cout &lt;&lt; <span class="number">100</span> * <span class="number">200</span> * (<span class="number">300</span> * <span class="number">400</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; (<span class="number">1e20</span> + <span class="number">-1e20</span>) + <span class="number">3.14</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;		<span class="comment">// 浮点数</span></span><br><span class="line">    cout &lt;&lt; <span class="number">1e20</span> + (<span class="number">-1e20</span> + <span class="number">3.14</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-1894967296</span></span><br><span class="line"><span class="number">-1894967296</span></span><br><span class="line"><span class="number">3.14</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>可以观察数学特性在此失效，整数使用结合律后结果虽然一致，但数值过大导致溢出；浮点数不满足结合律的规则。为了写出运算正确的表达式，并使其具有良好的可移植性，我们有必要学习数字在机器内部的表示原理。</p>
-<h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><p>计算机大多以<strong>字节（byte）</strong>作为最小的可寻址的内存单位，1字节=8比特。内存可以看作一个非常大的字节数组，也就是<strong>虚拟内存</strong>；每个字节有唯一的数字标识，称为<strong>地址</strong>；所有地址的集合称为<strong>虚拟内存空间</strong>。</p>
+<p>可以观察到数学特性在此失效，整数使用结合律后结果虽然一致，但数值过大导致溢出；浮点数不满足结合律的规则。为了写出运算正确的表达式，并使其具有良好的可移植性，我们有必要学习数字在机器内部的表示原理。</p>
+<h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><p>计算机大多以<strong>字节（byte）</strong>作为最小的可寻址的内存单位，1byte = 8bit。内存可以看作一个非常大的字节数组，也就是<strong>虚拟内存</strong>；每个字节有唯一的数字标识，称为<strong>地址</strong>；所有地址的集合称为<strong>虚拟地址空间</strong>（virtual address space）。</p>
+<p>虚拟地址空间的最大大小由字长（word size）决定，它指明了指针数据的标称大小。一个字长为 $w$ 的机器，虚拟地址的范围为 $0$~$2^w-1$，32 位字长限制虚拟地址空间为 4GB，64 位则高达 16EB。</p>
 <h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">十进制</th>
-<th style="text-align:center">二进制</th>
-<th style="text-align:center">八进制</th>
-<th style="text-align:center">十六进制</th>
+<th style="text-align:center"><strong>十进制</strong></th>
+<th style="text-align:center"><strong>二进制</strong></th>
+<th style="text-align:center"><strong>八进制</strong></th>
+<th style="text-align:center"><strong>十六进制</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -246,13 +250,13 @@
 <td style="text-align:center">0</td>
 </tr>
 <tr>
-<td style="text-align:center">1</td>
+<td style="text-align:center">1 / $2^0$</td>
 <td style="text-align:center">0001</td>
 <td style="text-align:center">1</td>
 <td style="text-align:center">1</td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
+<td style="text-align:center">2 / $2^1$</td>
 <td style="text-align:center">0010</td>
 <td style="text-align:center">2</td>
 <td style="text-align:center">2</td>
@@ -264,7 +268,7 @@
 <td style="text-align:center">3</td>
 </tr>
 <tr>
-<td style="text-align:center">4</td>
+<td style="text-align:center">4 / $2^2$</td>
 <td style="text-align:center">0100</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
@@ -288,7 +292,7 @@
 <td style="text-align:center">7</td>
 </tr>
 <tr>
-<td style="text-align:center">8</td>
+<td style="text-align:center">8 / $2^3$</td>
 <td style="text-align:center">1000</td>
 <td style="text-align:center">10</td>
 <td style="text-align:center">8</td>
@@ -338,25 +342,70 @@
 </tbody>
 </table>
 </div>
-<h4 id="十进制转k进制"><a href="#十进制转k进制" class="headerlink" title="十进制转k进制"></a>十进制转k进制</h4><p>以$835.6875_{10}$转换为二进制为例</p>
-<ul>
-<li><p><strong>整数部分：除基取余法</strong></p>
-<p>利用短除法，将整数不断除以基数k，然后将余数从下到上书写（逆序，上低位，下高位）。如$（835）_{10}=(1101000011)_2$ </p>
-</li>
-</ul>
+<h4 id="十进制转-k-进制"><a href="#十进制转-k-进制" class="headerlink" title="十进制转 k 进制"></a>十进制转 k 进制</h4><p>以 $\mathtt{835.6875}_{10}$ 转换为二进制为例</p>
+<p><strong>整数部分：除基取余法</strong></p>
+<p>利用短除法，将整数不断除以基数k，然后将余数从下到上书写（逆序，上低位，下高位）。如$(\mathtt{835})_{10}=(\mathtt{1101000011})_2$ </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">835 ÷ 2 &#x3D; 417 ··· 1</span><br><span class="line">417 ÷ 2 &#x3D; 208 ··· 1</span><br><span class="line">208 ÷ 2 &#x3D; 104 ··· 0</span><br><span class="line">104 ÷ 2 &#x3D; 52  ··· 0</span><br><span class="line">52 ÷ 2 &#x3D; 26   ··· 0</span><br><span class="line">26 ÷ 2 &#x3D; 13   ··· 0</span><br><span class="line">13 ÷ 2 &#x3D; 6    ··· 1</span><br><span class="line">6 ÷ 2 &#x3D; 3     ··· 0</span><br><span class="line">3 ÷ 2 &#x3D; 1     ··· 1</span><br><span class="line">1 ÷ 2 &#x3D; 0     ··· 1</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>小数部分：乘基取整法</strong></p>
-<p>利用乘法，将小数不断乘以技术k，每乘一次，取整数部分，剩下的小数部分继续做乘法，然后将取出的整数从前往后书写（顺序）。$(0.6875)_{10}=(0.1011)_2$ </p>
-</li>
-</ul>
+<p><strong>小数部分：乘基取整法</strong></p>
+<p>利用乘法，将小数不断乘以技术k，每乘一次，取整数部分，剩下的小数部分继续做乘法，然后将取出的整数从前往后书写（顺序）。$(\mathtt{0.6875})_{10}=(\mathtt{0.1011})_2$ </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0.6875 × 2 &#x3D; 1.375 ··· 整数 1</span><br><span class="line">0.375 × 2 &#x3D; 0.75   ··· 整数 0</span><br><span class="line">0.75 × 2 &#x3D; 1.5     ··· 整数 1</span><br><span class="line">0.5 × 2            ··· 整数 1</span><br></pre></td></tr></table></figure>
-<p>因此$835.6875_{10}=(1101000011.1011)_2$ </p>
-<h4 id="k进制转十进制"><a href="#k进制转十进制" class="headerlink" title="k进制转十进制"></a>k进制转十进制</h4><p><strong>方法：按权展开</strong> </p>
-<p>$(1101000011.1011)_2 \\= 1×2^9+1×2^8+1×2^6+1×2^1+1×2^0+1×2^{-1}+1×2^{-3}+1×2^{-4} \\=(835.6875)_{10}$ </p>
-<h4 id="二、八、十六进制间的转换"><a href="#二、八、十六进制间的转换" class="headerlink" title="二、八、十六进制间的转换"></a>二、八、十六进制间的转换</h4><p>3位二进制对应1位八进制</p>
-<p>4位二进制对应1位十六进制</p>
-<h3 id="字数据大小"><a href="#字数据大小" class="headerlink" title="字数据大小"></a>字数据大小</h3><h3 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h3><h3 id="表示字符串"><a href="#表示字符串" class="headerlink" title="表示字符串"></a>表示字符串</h3><h3 id="表示代码"><a href="#表示代码" class="headerlink" title="表示代码"></a>表示代码</h3><h3 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h3><h3 id="C语言中的位级运算"><a href="#C语言中的位级运算" class="headerlink" title="C语言中的位级运算"></a>C语言中的位级运算</h3><h3 id="C语言中的逻辑运算"><a href="#C语言中的逻辑运算" class="headerlink" title="C语言中的逻辑运算"></a>C语言中的逻辑运算</h3><h3 id="C语言中的移位运算"><a href="#C语言中的移位运算" class="headerlink" title="C语言中的移位运算"></a>C语言中的移位运算</h3>
+<p>因此$(\mathtt{835.6875})_{10}=(\mathtt{1101000011.1011})_2$ </p>
+<p>* $x=2^n$ 转十六进制的简便方法：$n=i+4×j$，则十六进制为 $\mathtt{0x2^i(0)_{j个}}$ </p>
+<h4 id="k-进制转十进制"><a href="#k-进制转十进制" class="headerlink" title="k 进制转十进制"></a>k 进制转十进制</h4><p><strong>按权展开</strong> </p>
+<p>$(\mathtt{1101000011.1011})_2 \\= 1×2^9+1×2^8+1×2^6+1×2^1+1×2^0+1×2^{-1}+1×2^{-3}+1×2^{-4} \\=(\mathtt{835.6875})_{10}$ </p>
+<h4 id="二、八、十六进制间的转换"><a href="#二、八、十六进制间的转换" class="headerlink" title="二、八、十六进制间的转换"></a>二、八、十六进制间的转换</h4><p>3 位二进制对应 1 位八进制</p>
+<p>4 位二进制对应 1 位十六进制</p>
+<h3 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h3><p>对于跨越多个字节的程序对象，我们需要考虑两个问题：一是如何找到这个对象，也就是说，这个对象的地址是什么，二是这些字节以怎样的方式排列。</p>
+<p>对于第一个问题，大多数机器的多字节程序对象都以<strong>连续字节序列</strong>的形式存储，对象的地址就是其中字节的最小地址。</p>
+<p>对于第二个问题，通常有两种方法：按照书写顺序，高位字节在前，低位字节在后，称为<strong>大端法</strong>（big endian），反之则为<strong>小端法</strong>（little endian）。</p>
+<p><img src="https://z3.ax1x.com/2021/05/30/2EXVxA.png" alt="image-20210530101924678"></p>
+<p>存储顺序的选择通常是任意的，Intel 的机器大多兼容小端模式，IBM 则大多使用大端模式，有些新的微处理器是双端法（bi-endian），可以将其自定义配置为大端或小端模式，但确定操作系统后，字节顺序就固定下来了，不能再更改。Android 和 IOS 都只能运行于小端模式。</p>
+<p>由于存储顺序选择的任意性，有时也会对程序员造成困扰：</p>
+<ul>
+<li>小端模式的机器通过网络传输二进制数据给大端模式的机器，接收到的数据可能是逆序的</li>
+<li>检查机器级程序时，阅读顺序影响理解</li>
+<li>系统级编程中的强制类型转换（cast）或联合（union）</li>
+</ul>
+<h3 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h3><p><img src="https://z3.ax1x.com/2021/05/30/2EOOC4.png" alt="Boolean algebra"></p>
+<p>布尔代数和整数运算有相似性，它们遵循一些运算规则：</p>
+<p>&amp; 对 | 的分配率：$a\ \&amp;\  (\ b \ |\  c\ ) \ = \ (\ a\ \&amp;\ b\ )\ |\ (\ a\ \&amp;\ c)$  </p>
+<p>| 对 &amp; 的分配率：$a\ |\ (\ b\ \&amp;\ c\ )\ =\ (\ a\ |\ b\ )\ \&amp;\ (\ a\ |\ c\ )$  </p>
+<p>加法逆元：$a\ \hat{}\ a=0$，$a\ \hat{}\ 0 = a$，$a\ \hat{}\ 1=\neg a$ </p>
+<h3 id="C-语言中的应用"><a href="#C-语言中的应用" class="headerlink" title="C 语言中的应用"></a>C 语言中的应用</h3><h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>C 语言支持按位布尔运算，它适用于任何整型数据类型：unsigned、short、int、long、char。将十六进制进行位级运算，先转化成二进制，运算完成再转回十六进制。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>布尔代数</strong></th>
+<th style="text-align:center">OR</th>
+<th style="text-align:center">AND</th>
+<th style="text-align:center">NOT</th>
+<th style="text-align:center">XOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>C 语言</strong></td>
+<td style="text-align:center">&#124;</td>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">~</td>
+<td style="text-align:center">^</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>按位运算可以实现两个数的交换：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inplace_swap</span><span class="params">(<span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span> </span>&#123;</span><br><span class="line">    *y = *x ^ *y; <span class="comment">/* Step 1 */</span></span><br><span class="line">    *x = *x ^ *y; <span class="comment">/* Step 2 */</span></span><br><span class="line">    *y = *x ^ *y; <span class="comment">/* Step 3 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*数组元素首尾两端依次对调*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse_array</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> first, last;</span><br><span class="line">    <span class="keyword">for</span> (first = <span class="number">0</span>, last = cnt<span class="number">-1</span>;</span><br><span class="line">         first &lt;= last;</span><br><span class="line">         first++,last--)</span><br><span class="line">        inplace_swap(&amp;a[first], &amp;a[last]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序存在问题，当数组长度为 $2k+1$ 时，中间的数字将自己与自己交换，即做了加法逆元运算，对调以后结果为 0。</p>
+<p><strong>掩码</strong>运算也是位级运算的常见用法：$\mathtt{0x12345678 \&amp; 0xFF}$，得到 $\mathtt{0x00000078}$，除了低 8 位全被置为 0。</p>
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><p>逻辑运算符号有 ||、&amp;&amp;、！，和位级运算相似，但本质不同。逻辑运算认为，0 是 FALSE，非 0 是 TRUE，返回 0 或 1，当结果能够确定时，将不会继续运算下去。</p>
+<p>这种特性叫做短路（short cut），利用这种特性可以做这样一些事情，如 a&amp;&amp;5/a 不会造成被 0 除，p&amp;&amp;*p++ 不会导致间接引用空指针。</p>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：x&lt;&lt;k，向左移动 k 位，高 k 位舍弃，低 k 位补 0</p>
+<p>逻辑右移：x&gt;&gt;k，向右移动 k 位，低 k 位舍弃，高 k 位补 0</p>
+<p>算术右移：x&gt;&gt;k，向右移动 k 位，低 k 位舍弃，高 k 位补最高有效位的值</p>
+<p><strong>逻辑右移常用于无符号数，算术右移常用于有符号数。</strong></p>
+<p>对于一个 w 位的数据类型，当移位量 k 很大时，移位指令只考虑位移量的低 $\log_2{w}$，即实际位移量为 $k \ \textrm{mod}\ w$ </p>
+<h2 id="整数表示"><a href="#整数表示" class="headerlink" title="整数表示"></a>整数表示</h2>
     </div>
 
     
@@ -436,7 +485,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">信息存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">进制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%ACk%E8%BF%9B%E5%88%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">十进制转k进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">k进制转十进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.3.</span> <span class="nav-text">二、八、十六进制间的转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.2.</span> <span class="nav-text">字数据大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E5%92%8C%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.3.</span> <span class="nav-text">寻址和字节顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.</span> <span class="nav-text">表示字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%E4%BB%A3%E7%A0%81"><span class="nav-number">1.5.</span> <span class="nav-text">表示代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">布尔代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BA%A7%E8%BF%90%E7%AE%97"><span class="nav-number">1.7.</span> <span class="nav-text">C语言中的位级运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">1.8.</span> <span class="nav-text">C语言中的逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.9.</span> <span class="nav-text">C语言中的移位运算</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">信息存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">进制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC-k-%E8%BF%9B%E5%88%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">十进制转 k 进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">k 进制转十进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.3.</span> <span class="nav-text">二、八、十六进制间的转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E5%92%8C%E5%AD%97%E8%8A%82%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">寻址和字节顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">布尔代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">C 语言中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BA%A7%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.1.</span> <span class="nav-text">位级运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.2.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">移位运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">整数表示</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -450,17 +499,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
